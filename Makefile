@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = fdf
-CC = gcc -I/usr/include -Imlx_linux
+CC = gcc
 CFLAGS = -Werror -Wall -Wextra
 SRCS = file_to_str.c \
 str_to_t_fdf.c \
@@ -30,7 +30,7 @@ $(NAME): $(OBJS)
 	make -C minilibx-linux
 	$(CC) $(CFLAGS) $(OBJS) \
 	minilibx-linux/libmlx.a \
-	-Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz \
+	-lXext -lX11 -lm \
 	libft/libft.a -o $(NAME)
 
 clean:
