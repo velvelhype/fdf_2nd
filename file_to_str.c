@@ -20,14 +20,14 @@ ssize_t	read_and_check(int	fd, char *buf)
 	ssize_t	ret;
 
 	ret = read(fd, buf, 1);
-	if(ret == -1)
+	if (ret == -1)
 		exit(1);
 	return (ret);
 }
 
 char	*read_to_save(int fd, int stack_size, char *save)
 {
-	ssize_t		read_ret;
+	ssize_t	read_ret;
 	char	buf[1];
 	size_t	i;
 	char	*new;
