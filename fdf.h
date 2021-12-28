@@ -6,7 +6,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "libft/libft.h"
-# include "mlx_linux/mlx.h"
+# include "minilibx-linux/mlx.h"
 
 typedef struct s_point
 {

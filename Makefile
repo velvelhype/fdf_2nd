@@ -27,17 +27,20 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C libft
+	make -C minilibx-linux
 	$(CC) $(CFLAGS) $(OBJS) \
-	mlx_linux/libmlx.a \
+	minilibx-linux/libmlx.a \
 	-Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz \
 	libft/libft.a -o $(NAME)
 
 clean:
 	make clean -C libft
+	make clean -C minilibx-linux
 	rm -f $(OBJS)
 
 fclean: clean
 	make fclean -C libft
+	make clean -C minilibx-linux
 	rm -f $(NAME)
 
 re: fclean all
