@@ -9,20 +9,30 @@ void	ft_strncpy(char *dst, char *src, size_t	n)
 	}
 }
 
-void	read_ret_error_check(int	read_ret)
+void	read_ret_error_check(ssize_t	read_ret)
 {
-	if (read_ret == 0 || read_ret == -1)
+	if (read_ret == 0)
 		exit(1);
+}
+
+ssize_t	read_and_check(int	fd, char *buf)
+{
+	ssize_t	ret;
+
+	ret = read(fd, buf, 1);
+	if(ret == -1)
+		exit(1);
+	return (ret);
 }
 
 char	*read_to_save(int fd, int stack_size, char *save)
 {
-	int		read_ret;
+	ssize_t		read_ret;
 	char	buf[1];
 	size_t	i;
 	char	*new;
 
-	read_ret = read(fd, buf, 1);
+	read_ret = read_and_check(fd, buf);
 	read_ret_error_check(read_ret);
 	i = 0;
 	while (read_ret)
@@ -38,7 +48,7 @@ char	*read_to_save(int fd, int stack_size, char *save)
 		}
 		save[i] = *buf;
 		i++;
-		read_ret = read(fd, buf, 1);
+		read_ret = read_and_check(fd, buf);
 	}
 	save[i] = '\0';
 	return (save);

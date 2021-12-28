@@ -38,7 +38,7 @@ void	init_fdf(t_fdf *f)
 	a = mlx_get_data_addr(f->image, &(f->pix_bits), &(f->line_len), &(f->endi));
 	f->addr = a;
 	f->is_threeD = 1;
-	f->rotation = 1;
+	f->rotation = 1.047;
 	f->shift_x = WIDTH / 2;
 	f->shift_y = HEIGHT / 2;
 	f->zoom = 10;
